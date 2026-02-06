@@ -18,6 +18,7 @@ bspc rule -a pavucontrol state=floating center=on
 pkill sxhkd 2>/dev/null; sxhkd -c ~/.config/bspwm/sxhkdrc &
 pkill xcape 2>/dev/null; xcape -e "Super_L=Alt_L|F1" &
 xsetroot -cursor_name left_ptr &
+# alttab -w 1 &
 ~/.config/polybar/launch.sh &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xwallpaper --zoom ~/.local/share/walls/wallpaper.jpg &

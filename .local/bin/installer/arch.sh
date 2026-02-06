@@ -37,8 +37,8 @@ fi
 # git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si
 # paru -S --needed xsct
 systemctl --user --now enable pipewire pipewire-pulse
-git clone --depth=1 https://github.com/sayanta01/dmenu ~/.config/dmenu && cd ~/.config/dmenu && sudo make clean install
-git clone --depth=1 https://github.com/sayanta01/nvim ~/.config/nvim
+git clone --depth=1 https://github.com/sayanta01/dmenu "$HOME/.config/dmenu" && cd "$HOME/.config/dmenu" && sudo make clean install
+git clone --depth=1 https://github.com/sayanta01/nvim "$HOME/.config/nvim"
 # ntfs-3g
 # sudo systemctl disable docker
 
