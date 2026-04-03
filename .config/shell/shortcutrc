@@ -64,7 +64,7 @@ sw() {
   done
 }
 
-lfcd() {
+l() {
   dir=$(lf -print-last-dir "$@") || return
   while [ -n "$dir" ] && ! cd "$dir" 2>/dev/null; do
     dir=$(dirname "$dir")
