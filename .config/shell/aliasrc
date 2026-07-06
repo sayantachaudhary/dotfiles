@@ -2,10 +2,10 @@
 
 if [ -f /etc/arch-release ]; then
   alias big-pkg="expac -H M '%m\t%n' | sort -h | nl"
-	alias clean='sudo pacman -Rns $(pacman -Qtdq); sudo paccache -r; paru -Sc --noconfirm; rm -rf ~/.cache/paru'
+	alias clean='sudo pacman -Rns $(pacman -Qtdq); sudo paccache -r; paru -Sc --noconfirm'
 	alias installed="grep -i installed /var/log/pacman.log"
 elif [ -f /etc/debian_version ]; then
-	alias fix-pkg="sudo dpkg --configure -a; sudo apt --fix-broken install -y; sudo apt install -f; sudo apt update --fix-missing"
+	alias fix-pkg="sudo dpkg --configure -a; sudo apt --fix-broken install -y"
 	alias clean="sudo apt -y autoremove; sudo apt clean"
 	alias installed="sudo apt list --installed"
 else
@@ -55,7 +55,7 @@ alias fix-faillock='faillock --user "$USER" --reset'
 alias rr="curl https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 alias matrix='tr -c "[:xdigit:]" " " </dev/urandom'
 alias tb="nc termbin.com 9999"
-alias ff='fd -t f | fzf --preview "cat {}" | xargs -r "$EDITOR"'
+alias ff='fd -t f -E node_modules | fzf | xargs -r "$EDITOR"'
 alias vuln="grep . /sys/devices/system/cpu/vulnerabilities/*"
 alias dmesg="sudo dmesg -T"
 alias hw="hwinfo --short"

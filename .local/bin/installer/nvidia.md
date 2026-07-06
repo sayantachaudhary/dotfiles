@@ -1,17 +1,9 @@
-# Check which kernel is installed to set appropriate headers pkg
 sudo pacman -S --noconfirm linux-lts linux-lts-headers
+sudo pacman -S --noconfirm nvidia-open-dkms nvidia-utils nvidia-settings libva-nvidia-driver
+echo "options nvidia_drm modeset=1" | sudo tee /etc/modprobe.d/nvidia.conf
+sudo mkinitcpio -P
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-sudo pacman -S --noconfirm nvidia-dkms nvidia-utils nvidia-settings libva-nvidia-driver
-
-echo "options nvidia_drm modeset=1" | sudo tee /etc/modprobe.d/nvidia.conf
-
-nvidia_modules="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
-sudo sed -i -E 's/ nvidia_drm//g; s/ nvidia_uvm//g; s/ nvidia_modeset//g; s/ nvidia//g;' /etc/mkinitcpio.conf
-sudo sed -i -E "s/^(MODULES=\()/\1${nvidia_modules} /" /etc/mkinitcpio.conf
-sudo mkinitcpio -P
-
-https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
 https://wiki.hypr.land/Nvidia/
 https://youtu.be/Pn2iUgW3l6w?si=-O52reqVLFTnNws9
 Fix Screen Tearing in X11

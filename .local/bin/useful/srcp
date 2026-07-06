@@ -12,7 +12,7 @@ conect() {
 audio() {
   scrcpy --no-video --no-window \
     --audio-source=mic \
-    --record="$HOME/Music/$(date +%Y-%m-%d-%H-%M-%S).opus"
+    --record="$HOME/Music/$(date +%Y-%m-%d_%H-%M-%S).opus"
 }
 
 camera() {
