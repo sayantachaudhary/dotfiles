@@ -1,6 +1,6 @@
 #!/bin/sh
 
-menu=$(command -v dmenu >/dev/null 2>&1 && echo "dmenu -i" || echo "rofi -dmenu -i")
+menu=$(command -v rofi >/dev/null 2>&1 && echo "rofi -dmenu -i" || echo "dmenu -i")
 if command -v fd >/dev/null 2>&1; then
 	file=$(fd -e pdf . "$HOME")
 else
@@ -9,7 +9,7 @@ fi
 
 [ -n "$file" ] || exit
 
-chosen_file=$(echo "$file" | eval "$menu -l 20 -p 'Choose PDF:'")
+chosen_file=$(echo "$file" | eval "$menu -p 'Choose PDF:'")
 if [ -n "$chosen_file" ]; then
 	zathura "$chosen_file" 2>/dev/null &
 fi

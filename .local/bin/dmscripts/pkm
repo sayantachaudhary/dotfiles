@@ -1,8 +1,8 @@
 #!/bin/sh
 
-menu=$(command -v dmenu >/dev/null && echo "dmenu -i" || echo "rofi -dmenu -i")
+menu=$(command -v dmenu >/dev/null 2>&1 && echo "dmenu -i" || echo "rofi -dmenu -i")
 select_pid=$(ps -u "$USER" -o pid,%cpu,%mem,comm | sort -k2 -r | $menu -l 20 | awk '{print $1}')
 
 if [ -n "$select_pid" ]; then
-  kill -15 "$select_pid"
+	kill -15 "$select_pid"
 fi
